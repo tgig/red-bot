@@ -6,5 +6,7 @@
   "haters.coffee",
   "coin.coffee",
   "weather.coffee",
-  "excuse.coffee"
+  "excuse.coffee",
+  "hello.coffee",
+  "good-night.coffee"
 ]
