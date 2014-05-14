@@ -37,18 +37,9 @@ module.exports = (robot) ->
     msg.http(url)
       .headers(Authorization: auth, Accept: 'application/json')
       .get() (err, res, body) ->
-        out = ''
         switch res.statusCode
           when 200
-            $ = cheerio.load(body, { xmlMode: true })
-            $('entry').each ->
-              $this = $(this)
-              out += '*' + $this.find('title').text() + '* from ' + $this.find('name').text() + ' _' + $this.find('email').text() + '_\n' +
-                '> ' + $this.find('summary').text() + '\n' +
-                '> ' + $this.find('link').attr('href') + '\n\n'
-
-            msg.send out
-
+            outputMessages(msg, body)
           when 404
             msg.send "Something went wrong... 404 error"
           when 401
@@ -56,6 +47,16 @@ module.exports = (robot) ->
           else
             msg.send "Something went awry, and I'm not sure why :( Status code = " + res.statusCode
 
+  outputMessages = (msg, body) ->
+    out = ''
+    $ = cheerio.load(body, { xmlMode: true })
+    $('entry').each ->
+      $this = $(this)
+      out += '*' + $this.find('title').text() + '* from ' + $this.find('name').text() + ' _(' + $this.find('email').text() + ')_\n' +
+        '> ' + $this.find('summary').text() + '\n' +
+        '> ' + $this.find('link').attr('href') + '\n\n'
+
+    msg.send out
 
 
   robot.respond /gmail inbox/i, (msg) ->
