@@ -43,8 +43,7 @@ module.exports = (robot) ->
             $ = cheerio.load(body, { xmlMode: true })
             $('entry').each ->
               $this = $(this)
-              out += $this.find('name').text() + ' - ' + $this.find('email').text() + '\n' +
-                '*' + $this.find('title').text() + '*\n' +
+              out += '*' + $this.find('title').text() + '* from ' + $this.find('name').text() + ' _' + $this.find('email').text() + '_\n' +
                 '> ' + $this.find('summary').text() + '\n' +
                 '> ' + $this.find('link').attr('href') + '\n\n'
 
