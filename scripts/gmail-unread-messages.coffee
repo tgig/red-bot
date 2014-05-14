@@ -44,7 +44,7 @@ module.exports = (robot) ->
             $('entry').each ->
               $this = $(this)
               out += $this.find('name').text() + ' - ' + $this.find('email').text() + '\n' +
-                $this.find('title').text() + '**\n' +
+                '*' + $this.find('title').text() + '*\n' +
                 '> ' + $this.find('summary').text() + '\n' +
                 '> ' + $this.find('link').attr('href') + '\n\n'
 
