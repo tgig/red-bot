@@ -12,6 +12,14 @@
 # Commands:
 #  hubot gmail inbox
 #  hubot gmail (label)
+#
+# Notes:
+#  Uses the gmail inbox feed - https://developers.google.com/gmail/gmail_inbox_feed
+#  to pull back recent messages in inbox, or with a specific label
+#
+# Author:
+#  tgig
+#
 cheerio = require 'cheerio'
 
 module.exports = (robot) ->
