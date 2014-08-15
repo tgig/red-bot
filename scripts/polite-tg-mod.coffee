@@ -26,7 +26,19 @@ shortResponses = [
   'vw',
   'np',
   'sure',
-  'any time'
+  'any time',
+  'you\'re welcome'
+]
+
+helloResponses = [
+  'Hello, it is going to be a beautiful day!',
+  'Hi, hope you have a great day!',
+  'Howdy',
+  'Good day mate!',
+  'What\'s up',
+  'Hola amigo',
+  'I am so glad you\'re here... it was boring in here without you :)',
+  'Howdy friend, good to hear your lovely voice again'
 ]
 
 farewellResponses = [
@@ -56,7 +68,7 @@ module.exports = (robot) ->
     msg.reply msg.random shortResponses if youTalkinToMe(msg, robot)
 
   robot.hear /\b(hello|hi|sup|howdy|good (morning|evening|afternoon)|what\'s up|sup)\b/i, (msg) ->
-    msg.reply "#{robot.name} at your service!" if youTalkinToMe(msg, robot)
+    msg.reply msg.random helloResponses if youTalkinToMe(msg, robot)
 
   robot.hear /\b(bye|night|goodbye|good night|see ya|adios|later)\b/i, (msg) ->
     msg.reply msg.random farewellResponses if youTalkinToMe(msg, robot)
